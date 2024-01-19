@@ -20,6 +20,8 @@ Rails.application.routes.draw do
           get "select_random" => "recipes#select_random"
         end
       end
+
+      resources :shopping_lists
     end
   end
 end
