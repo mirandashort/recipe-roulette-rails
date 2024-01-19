@@ -29,6 +29,12 @@ class Api::V1::RecipesController < ApplicationController
     render json: @ingredients.as_json
   end
 
+  def select_random
+    recipes = Recipe.all.sample(random_recipe_params[:recipe_count] || 3)
+
+    render json: { recipes: recipes }
+  end
+
   def add_to_shopping_list
     @recipe = Recipe.find(shopping_list_params[:recipe_id])
     ingredients = @recipe.get_ingredients
@@ -59,5 +65,9 @@ class Api::V1::RecipesController < ApplicationController
 
   private def shopping_list_params
     params.permit(:shopping_list_id, :recipe_id)
+  end
+
+  private def random_recipe_params
+    params.permit(:count)
   end
 end
