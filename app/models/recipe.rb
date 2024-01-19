@@ -40,7 +40,8 @@ class Recipe < ApplicationRecord
     end
   end
 
-  def add_to_shopping_list(shopping_list:)
+  def add_to_shopping_list(shopping_list_id:)
+    shopping_list = ShoppingList.find(shopping_list_id)
     ingredients = self.get_ingredients
     ingredients.each { |ing| shopping_list.add_item(**ing) }
   end

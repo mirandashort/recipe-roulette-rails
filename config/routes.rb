@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :recipes do
         get "ingredients" => "recipes#ingredients"
+        post "add_to_shopping_list" => "recipes#add_to_shopping_list"
       end
     end
   end
