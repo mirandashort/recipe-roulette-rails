@@ -10,7 +10,7 @@
 #
 # Indexes
 #
-#  index_shopping_list_recipes_on_recipe_id_and_shopping_list_id  (recipe_id,shopping_list_id) UNIQUE
+#  index_recipes_shopping_lists_on_recipe_id_and_shopping_list_id  (recipe_id,shopping_list_id) UNIQUE
 #
 class RecipeShoppingList < ApplicationRecord
   self.table_name = "recipes_shopping_lists"

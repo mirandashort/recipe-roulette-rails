@@ -1,6 +1,7 @@
 # == Schema Information
 #
-# Table name: shopping_list_items
+# Table name: items_shopping_lists
+
 #
 #  id               :integer          not null, primary key
 #  amount           :string

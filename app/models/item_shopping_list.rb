@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: shopping_list_items
+# Table name: items_shopping_lists
 #
 #  id               :integer          not null, primary key
 #  amount           :string
@@ -10,13 +10,8 @@
 #  updated_at       :datetime         not null
 #  shopping_list_id :bigint
 #
+class ItemShoppingList < ApplicationRecord
+  self.table_name = "items_shopping_lists"
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+  belongs_to :shopping_list
+end
