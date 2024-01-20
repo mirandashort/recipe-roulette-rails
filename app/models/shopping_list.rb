@@ -8,8 +8,8 @@
 #
 class ShoppingList < ApplicationRecord
   has_many :items, class_name: "ShoppingListItem", foreign_key: :shopping_list_id, dependent: :destroy
-  has_many :shopping_list_recipes, foreign_key: :shopping_list_id, dependent: :destroy
-  has_many :recipes, through: :shopping_list_recipes
+  has_many :recipes_shopping_lists, foreign_key: :shopping_list_id, dependent: :destroy, class_name: "RecipeShoppingList"
+  has_many :recipes, through: :recipes_shopping_lists, class_name: "RecipeShoppingList"
 
   def add_item(amount:, unit:, name:)
     sli = ShoppingListItem.create!(amount:, unit:, name:, shopping_list_id: self.id)

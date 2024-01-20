@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_19_133730) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_20_145944) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "recipes_shopping_lists", force: :cascade do |t|
+    t.bigint "shopping_list_id"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id", "shopping_list_id"], name: "index_recipes_shopping_lists_on_recipe_id_and_shopping_list_id", unique: true
   end
 
   create_table "shopping_list_items", force: :cascade do |t|
@@ -25,14 +33,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_19_133730) do
     t.bigint "shopping_list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "shopping_list_recipes", force: :cascade do |t|
-    t.bigint "shopping_list_id"
-    t.bigint "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id", "shopping_list_id"], name: "index_shopping_list_recipes_on_recipe_id_and_shopping_list_id", unique: true
   end
 
   create_table "shopping_lists", force: :cascade do |t|

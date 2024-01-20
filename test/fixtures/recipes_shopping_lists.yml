@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: shopping_list_recipes
+# Table name: recipes_shopping_lists
 #
 #  id               :integer          not null, primary key
 #  created_at       :datetime         not null
@@ -10,7 +10,7 @@
 #
 # Indexes
 #
-#  index_shopping_list_recipes_on_recipe_id_and_shopping_list_id  (recipe_id,shopping_list_id) UNIQUE
+#  index_recipes_shopping_lists_on_recipe_id_and_shopping_list_id  (recipe_id,shopping_list_id) UNIQUE
 #
 
 # This model initially had no columns defined. If you add columns to the
