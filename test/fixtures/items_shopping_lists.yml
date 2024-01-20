@@ -4,6 +4,7 @@
 #
 #  id               :integer          not null, primary key
 #  amount           :string
+#  checked          :boolean          default(FALSE), not null
 #  name             :string
 #  unit             :string
 #  created_at       :datetime         not null
