@@ -7,10 +7,17 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def check_item
-    item_shopping_list_id = ItemShoppingList.find(item_params[:item_shopping_list_id])
+    item = ItemShoppingList.find(item_params[:item_shopping_list_id])
     item.update!(checked: true)
 
-    render json: { item: item_shopping_list_id, checked: true }
+    render json: item
+  end
+
+  def uncheck_item
+    item = ItemShoppingList.find(item_params[:item_shopping_list_id])
+    item.update!(checked: false)
+
+    render json: item
   end
 
   def item_params

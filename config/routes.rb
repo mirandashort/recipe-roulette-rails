@@ -25,6 +25,8 @@ Rails.application.routes.draw do
       resources :shopping_lists
       resources :users do
         post "create_shopping_list" => "users#create_shopping_list"
+        put "check_item" => "users#check_item"
+        put "uncheck_item" => "users#uncheck_item"
       end
     end
   end
