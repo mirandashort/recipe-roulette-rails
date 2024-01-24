@@ -33,8 +33,4 @@ class Api::V1::UsersController < ApplicationController
   def item_params
     params.permit(:item_shopping_list_id)
   end
-
-  def user_params
-    params.require(:user).permit(:email, :first_name, :last_name)
-  end
 end
