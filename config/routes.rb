@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -27,7 +25,18 @@ Rails.application.routes.draw do
         post "create_shopping_list" => "users#create_shopping_list"
         put "check_item" => "users#check_item"
         put "uncheck_item" => "users#uncheck_item"
+
       end
+
+      devise_for :users, defaults: { format: :json }, path: '', path_names: {
+        sign_in: 'login',
+        sign_out: 'logout',
+        registration: 'signup'
+      },
+      controllers: {
+        sessions: 'api/v1/sessions',
+        registrations: 'api/v1/registrations'
+      }, singular: :user
     end
   end
 end
