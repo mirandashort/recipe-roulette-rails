@@ -1,4 +1,10 @@
 class Api::V1::RecipesController < ApplicationController
+  def index
+    @recipes = Recipe.all
+
+    render json: @recipes.map { |r| { name: r.name, url: r.url, id: r.id } }.as_json
+  end
+
   def show
     @recipe = Recipe.find(params[:id])
 
@@ -6,9 +12,12 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.create(**recipe_params.delete(:recipe_id))
-
-    render json: @recipe
+    begin
+      @recipe = Recipe.create!(**recipe_params.to_h)
+      render json: @recipe, status: 200
+    rescue StandardError => e
+      render json: { message: "Could not create recipe. #{e.message}" }, status: 400
+    end
   end
 
   def destroy

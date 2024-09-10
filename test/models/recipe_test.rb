@@ -8,6 +8,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_recipes_on_url  (url) UNIQUE
+#
 require "test_helper"
 
 class RecipeTest < ActiveSupport::TestCase

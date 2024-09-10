@@ -8,7 +8,13 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_recipes_on_url  (url) UNIQUE
+#
 class Recipe < ApplicationRecord
+  validates :url, uniqueness: true, format: { with: /(https:\/\/www.allrecipes.com\/recipe\/)\d+\/(\w+|\-)+\/\?print/ }
+
   INGREDIENT_LIST_ITEM_CSS = ".mntl-structured-ingredients__list-item"
 
   def get_ingredients

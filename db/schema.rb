@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_21_202325) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_27_210033) do
   create_table "items_shopping_lists", force: :cascade do |t|
     t.string "amount"
     t.string "unit"
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_202325) do
     t.text "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["url"], name: "index_recipes_on_url", unique: true
   end
 
   create_table "recipes_shopping_lists", force: :cascade do |t|

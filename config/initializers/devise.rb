@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '07140de8615f5987f414a14ba9a7f3e215c13027e652c6a72c1347c120a33c28af4c0c9afb09cf0ca01fede83ad477b75fd64bbfa345b991d9d93b97dbf8c277'
+  # config.secret_key = 'da9e6174a72c4bb595e96b8b8efcd79e5807485dbbe53b4a3ca7f2c6f16390d2c97675c9c62c62c418051fa58c82e13737c0ee802627baaa48344ba99bc87fe1'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -126,7 +126,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 12
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '655e17230f23a111ac27df43bc793d7da8638ada4b25279239e08a8eea04d4a048152c11fbe3a411c77264f43a9d1b2d8536fb7a4a685655414f7b1fa8b8e75e'
+  # config.pepper = '68f9e48c1812ca55efb3b9e772447633ef5480248979a4a35f0843a89a593ffc97fbd4cdb0f1e83c779e0dd85d9370f20373f244949b07bbc73f9bbd9086e988'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -264,7 +264,6 @@ Devise.setup do |config|
   #
   # The "*/*" below is required to match Internet Explorer requests.
   # config.navigational_formats = ['*/*', :html, :turbo_stream]
-  config.navigational_formats = []
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
@@ -272,7 +271,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'navigational_formats
+  # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -311,15 +310,4 @@ Devise.setup do |config|
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
-
-  config.jwt do |jwt|
-      jwt.secret = Rails.application.credentials.devise_jwt_secret_key!
-      jwt.dispatch_requests = [
-        ['POST', %r{^/login$}]
-      ]
-      jwt.revocation_requests = [
-        ['DELETE', %r{^/logout$}]
-      ]
-      jwt.expiration_time = nil # TODO: SET EXPIRATION
-  end
 end
